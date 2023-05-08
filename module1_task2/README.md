@@ -2,9 +2,8 @@
 - install hugo
 - install git
 
-### Lifecyle
+### Lifecycle
 - make build
 - make post
 - make clean
-
-- make help for help
+- make help
