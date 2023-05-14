@@ -22,7 +22,7 @@ test: unit-tests integration-tests ## tests
 unit-tests: ## executes the unit tests for the file
 	go test -v -short -coverprofile=coverage-units.out
 
-integration-tests: ## does the integration tests
+integration-tests: ## integrations tests
 	go test -v -coverprofile=coverage-integrations.out
 
 help: ## usage
