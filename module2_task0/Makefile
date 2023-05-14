@@ -1,6 +1,6 @@
 build: ## builds the website with go hugo
 	hugo
-	go build -o awesome.api
+	go build -o awesome-api
 
 run: ## runs the application in the background
 	./awesome-api > ./awesome-api.log 2>1& &
