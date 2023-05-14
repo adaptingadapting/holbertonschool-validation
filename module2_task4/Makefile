@@ -1,7 +1,7 @@
 lint: ## makes sure the code is clean and nice
 	golangci-lint run
 
-build:  lint check ## builds the website with go hugo
+build: lint check ## builds the website with go hugo
 	hugo
 	go build -o awesome-api
 
