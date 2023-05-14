@@ -40,9 +40,3 @@ func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
 
   // End of the function: return HTTP 200 by default
 }
-Project Life-cycle
-The life-cycle of this project is the following:
-
-“build”: compile the source code of the application to a binary named awesome-api (the name awesome-api comes from the command go mod init github.com/<your github handle>/awesome-api) with the command go build. The first build may takes some times.
-
-“run”: Run the application in background by executing the binary awesome-api, and write logs into a file named 
