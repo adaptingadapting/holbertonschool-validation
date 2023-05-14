@@ -10,4 +10,5 @@
 - make stop
 - make clean
 - make test
+- make unit-tests
 - make help
