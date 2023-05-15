@@ -24,7 +24,7 @@ clean: ## sopts the app and deletes the awesome api binary and the log file
 	rm -f coverage-units.out
 	rm -f coverage-integrations.out
 
-test: unit-tests integration-tests ## tests
+test: unit-tests integration-tests validate ## tests
 
 unit-tests: ## executes the unit tests for the file
 	go test -v -short -coverprofile=coverage-units.out
