@@ -14,4 +14,5 @@
 - make integration-tests
 - make help
 - make check
+- make post
 - make validate
