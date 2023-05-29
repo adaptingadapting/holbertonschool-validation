@@ -19,11 +19,4 @@ clean: ## sopts the app and deletes the awesome api binary and the log file
 
 test: unit-tests integration-tests ## tests
 
-unit-tests: ## executes the unit tests for the file
-	go test -v -short -coverprofile=coverage-units.out
-
-integration-tests: ## integrations tests
-	go test -v -coverprofile=coverage-integrations.out
-
-help: ## usage
-	@awk -F ': ' '/^[^#].*: /{printf "  %-15s%s\n", $$1, $$2}' $(MAKEFILE_LIST)
+unit-tests: ## executes the unit tests for the fil
