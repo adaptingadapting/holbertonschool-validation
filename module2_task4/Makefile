@@ -28,7 +28,7 @@ check: ## Fails if markdownlint or markdown-link fail
 	@markdown-link-check ./content/posts/*
 
 validate: ## Prints validator result
-	@python3 /W3C-Validator/w3c_validator.py ./dist/index.html || true
+	python3 W3C-Validator/w3c_validator.py ./dist/index.html || true
 
 help: ## Show this help usage
 	@awk -F ': ' '/^[^#].*: /{printf "  %-15s%s\n", $$1, $$2}' $(MAKEFILE_LIST)
