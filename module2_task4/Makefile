@@ -1,36 +1,34 @@
-lint: ## makes sure the code is clean and nice
-	golangci-lint run
+lint: ## Checks code for linting error
+	@golangci-lint run
 
-build: lint check ## builds the website with go hugo
-	hugo
-	go build -o awesome-api
+build: lint check ## Compile the source code of the application
+	@hugo
+	@go build -o awesome-api
 
-run: ## runs the application in the background
-	./awesome-api > ./awesome-api.log 2>&1 &
+run: ## Run the application in the background
+	@nohup ./awesome-api >./awesome-api.log 2>&1 &
 
-stop: ## stops the app with the command kill
-	pkill awesome-api
+stop: ## Stop the application
+	@pkill awesome-api
 
-clean: ## sopts the app and deletes the awesome api binary and the log file
-	rm -rf dist
-	rm -f awesome-api awesome-api.log
-	rm -f coverage-units.out
-	rm -f coverage-integrations.out
+clean: ##  Delete binary and log files
+		@rm -rf dist
+		@rm -f awesome-api awesome-api.log coverage-units.out coverage-integrations.out
 
-test: unit-tests integration-tests ## tests
+unit-tests: ## Execute unit tests
+	@go test -v -short -coverprofile=coverage-units.out
 
-unit-tests: ## executes the unit tests for the file
-	go test -v -short -coverprofile=coverage-units.out
+integration-tests: ## Execute integration tests
+	@go test -v -coverprofile=coverage-integrations.out
 
-integration-tests: ## integrations tests
-	go test -v -coverprofile=coverage-integrations.out
+test: unit-tests integration-tests ## Execute all tests
 
-help: ## usage
+check: ## Fails if markdownlint or markdown-link fail
+	@markdownlint ./content/posts/*
+	@markdown-link-check ./content/posts/*
+
+validate: ## Prints validator result
+	@python3 /W3C-Validator/w3c_validator.py ./dist/index.html || true
+
+help: ## Show this help usage
 	@awk -F ': ' '/^[^#].*: /{printf "  %-15s%s\n", $$1, $$2}' $(MAKEFILE_LIST)
-
-check: ## checks for bad markdown or dead links
-	markdownlint content/posts/*
-	markdown-link-check content/posts/*
-
-validate: ## validates the html with the holberton w3c validator
-	./W3C-Validator/w3c_validator.py ./dist/index.html || true
